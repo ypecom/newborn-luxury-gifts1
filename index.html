@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newborn Luxury Gift - 初生之礼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #0a0e27;
+            --dark-secondary: #1a1f3a;
+            --accent-gold: #c9a961;
+            --accent-silver: #e8e8e8;
+            --text-light: #f0f0f0;
+            --text-muted: #b0b0b0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 语言切换器 */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(10, 14, 39, 0.95);
+            padding: 0.8rem 1rem;
+            border-radius: 25px;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            border-color: var(--accent-gold);
+        }
+
+        /* 导航栏 */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 1.2rem 0;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄部分 */
+        .hero {
+            margin-top: 60px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%), linear-gradient(rgba(201, 169, 97, 0.1), rgba(201, 169, 97, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.05) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--text-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            box-shadow: 0 10px 40px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-silver);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(201, 169, 97, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* 关于部分 */
+        .about {
+            padding: 8rem 0;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.15) 0%, rgba(232, 232, 232, 0.05) 100%);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 产品系列 */
+        .products {
+            padding: 8rem 0;
+            background: var(--dark-secondary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--dark-bg);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(201, 169, 97, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(26, 31, 58, 0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .product-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        /* 价格显示区域 */
+        .price-section {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .original-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+            text-decoration-color: var(--accent-gold);
+        }
+
+        .discount-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, var(--accent-gold), #e8d4a0);
+            color: var(--dark-bg);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            animation: pulse 2s infinite;
+        }
+
+        .limit-info {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .stock-limit, .time-limit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stock-limit::before {
+            content: "📦";
+            font-size: 1rem;
+        }
+
+        .time-limit::before {
+            content: "⏰";
+            font-size: 1rem;
+        }
+
+        .countdown {
+            color: #ff6b6b;
+            font-weight: 700;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
+        }
+
+        .product-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .product-btn:hover {
+            background: var(--accent-silver);
+            transform: translateY(-2px);
+        }
+
+        /* 图片画廊 */
+        .gallery {
+            padding: 8rem 0;
+            background: var(--dark-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(26, 31, 58, 0.5) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.2);
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 14, 39, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 评价部分 */
+        .testimonials {
+            padding: 8rem 0;
+            background: var(--dark-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--dark-bg);
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.1);
+        }
+
+        .testimonial-stars {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: var(--text-light);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* CTA部分 */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(26, 31, 58, 0.5) 100%);
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20ba5e;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* 模态窗口 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--dark-secondary);
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 2px;
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            color: var(--accent-gold);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-silver);
+        }
+
+        .modal h2 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+        }
+
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            background: var(--dark-bg);
+            color: var(--text-light);
+            border-radius: 2px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal input:focus, .modal textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .modal textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background: var(--accent-silver);
+            transform: translateY(-2px);
+        }
+
+        [data-lang] { display: none; }
+        [data-lang].active { display: block; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2.2rem; }
+            nav ul { gap: 1.5rem; font-size: 0.9rem; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ms')">Bahasa</button>
+    </div>
+
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">✨ Newborn Luxury ✨</div>
+            <ul>
+                <li><a href="#about" data-lang="zh" class="active">关于</a><a href="#about" data-lang="en">About</a><a href="#about" data-lang="ms">Tentang</a></li>
+                <li><a href="#products" data-lang="zh" class="active">产品</a><a href="#products" data-lang="en">Products</a><a href="#products" data-lang="ms">Produk</a></li>
+                <li><a href="#gallery" data-lang="zh" class="active">相册</a><a href="#gallery" data-lang="en">Gallery</a><a href="#gallery" data-lang="ms">Galeri</a></li>
+                <li><a href="#contact" data-lang="zh" class="active">联系</a><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="ms">Hubungi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 英雄部分 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle" data-lang="zh" class="active">✨ 初生之时，予之至礼 ✨</div>
+            <div class="hero-subtitle" data-lang="en">✨ Precious Moments Begin Here ✨</div>
+            <div class="hero-subtitle" data-lang="ms">✨ Momen Berharga Dimulai Di Sini ✨</div>
+
+            <h1 data-lang="zh" class="active">高端定制婴儿礼盒</h1>
+            <h1 data-lang="en">Premium Newborn Gift Collections</h1>
+            <h1 data-lang="ms">Koleksi Kado Bayi Premium</h1>
+
+            <p data-lang="zh" class="active">每份礼物都精心打造，为新生命的到来送上最温暖、最精致的祝福</p>
+            <p data-lang="en">Carefully crafted gifts to celebrate the arrival of new life with warmth and elegance</p>
+            <p data-lang="ms">Kado yang dirancang dengan cermat untuk merayakan kedatangan kehidupan baru</p>
+
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary" data-lang="zh" class="active">浏览产品</a>
+                <a href="#products" class="btn btn-primary" data-lang="en">Shop Now</a>
+                <a href="#products" class="btn btn-primary" data-lang="ms">Belanja Sekarang</a>
+
+                <a href="#contact" class="btn btn-secondary" data-lang="zh" class="active">获取咨询</a>
+                <a href="#contact" class="btn btn-secondary" data-lang="en">Get Consultation</a>
+                <a href="#contact" class="btn btn-secondary" data-lang="ms">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" data-lang="zh" class="active">关于初生之礼</h2>
+            <h2 class="section-title" data-lang="en">About Newborn Luxury</h2>
+            <h2 class="section-title" data-lang="ms">Tentang Newborn Luxury</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-lang="zh" class="active">精心雕琢的每一个细节</h3>
+                    <h3 data-lang="en">Meticulously Crafted Details</h3>
+                    <h3 data-lang="ms">Setiap Detail Dirancang dengan Sempurna</h3>
+
+                    <p data-lang="zh" class="active">初生之礼致力于为每个新生命的到来创造最难忘的时刻。我们精选全球顶级品牌，以最高标准的工艺，打造专属于初生婴儿的高端礼盒。</p>
+                    <p data-lang="en">We are dedicated to creating unforgettable moments for every newborn's arrival. Our luxury collections feature premium global brands, crafted to the highest standards for your precious little one.</p>
+                    <p data-lang="ms">Kami berkomitmen untuk menciptakan momen tak terlupakan bagi setiap kelahiran bayi. Koleksi mewah kami menampilkan merek-merek global premium, dirancang dengan standar tertinggi.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/About/Product/gallery/Gift%20Set%20A.jpeg" alt="关于我们" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品系列 -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title" data-lang="zh" class="active">臻选产品系列</h2>
+            <h2 class="section-title" data-lang="en">Premium Product Collections</h2>
+            <h2 class="section-title" data-lang="ms">Koleksi Produk Premium</h2>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/About/Product/gallery/Gift%20set%20B.jpeg" alt="护理礼盒" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-lang="zh" class="active">新生儿护理礼盒</h3>
+                        <h3 class="product-name" data-lang="en">Newborn Care Collection</h3>
+                        <h3 class="product-name" data-lang="ms">Koleksi Perawatan Bayi Baru Lahir</h3>
+
+                        <p class="product-description" data-lang="zh" class="active">精选婴儿护肤品，温和配方，呵护嫩肌</p>
+                        <p class="product-description" data-lang="en">Premium skincare products with gentle formulas for delicate baby skin</p>
+                        <p class="product-description" data-lang="ms">Produk perawatan kulit premium dengan formula lembut untuk kulit bayi</p>
+
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">RM 388</span>
+                                <span class="discount-price">RM 288</span>
+                                <span class="discount-badge">26% OFF</span>
+                            </div>
+                            <div class="limit-info">
+                                <span class="stock-limit">仅剩8套</span>
+                                <span class="time-limit">还有 <span class="countdown" id="timer1">12:34:56</span></span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="openBooking('护理礼盒')" data-lang="zh" class="active">立即订购</button>
+                        <button class="product-btn" onclick="openBooking('Care Collection')" data-lang="en">Order Now</button>
+                        <button class="product-btn" onclick="openBooking('Koleksi Perawatan')" data-lang="ms">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/About/Product/gallery/Gift%20Set%20C.jpeg" alt="睡眠礼盒" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-lang="zh" class="active">舒适睡眠礼盒</h3>
+                        <h3 class="product-name" data-lang="en">Comfort Sleep Collection</h3>
+                        <h3 class="product-name" data-lang="ms">Koleksi Tidur Nyaman</h3>
+
+                        <p class="product-description" data-lang="zh" class="active">顶级有机棉寝具，为宝宝创造最舒适的睡眠环境</p>
+                        <p class="product-description" data-lang="en">Premium organic cotton bedding for the most comfortable sleep</p>
+                        <p class="product-description" data-lang="ms">Linen katun organik premium untuk tidur paling nyaman</p>
+
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">RM 499</span>
+                                <span class="discount-price">RM 399</span>
+                                <span class="discount-badge">20% OFF</span>
+                            </div>
+                            <div class="limit-info">
+                                <span class="stock-limit">仅剩5套</span>
+                                <span class="time-limit">还有 <span class="countdown" id="timer2">18:45:22</span></span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="openBooking('睡眠礼盒')" data-lang="zh" class="active">立即订购</button>
+                        <button class="product-btn" onclick="openBooking('Sleep Collection')" data-lang="en">Order Now</button>
+                        <button class="product-btn" onclick="openBooking('Koleksi Tidur')" data-lang="ms">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/About/Product/gallery/Gift%20set%20D.jpeg" alt="妈咪礼盒" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-lang="zh" class="active">滋养妈咪礼盒</h3>
+                        <h3 class="product-name" data-lang="en">Mommy Wellness Collection</h3>
+                        <h3 class="product-name" data-lang="ms">Koleksi Wellness Ibu</h3>
+
+                        <p class="product-description" data-lang="zh" class="active">为新妈妈精心设计，恢复身心的温暖礼物</p>
+                        <p class="product-description" data-lang="en">Specially designed for new mothers to aid recovery and wellness</p>
+                        <p class="product-description" data-lang="ms">Dirancang khusus untuk ibu baru untuk membantu pemulihan dan kesejahteraan</p>
+
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">RM 428</span>
+                                <span class="discount-price">RM 328</span>
+                                <span class="discount-badge">23% OFF</span>
+                            </div>
+                            <div class="limit-info">
+                                <span class="stock-limit">仅剩12套</span>
+                                <span class="time-limit">还有 <span class="countdown" id="timer3">15:22:10</span></span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="openBooking('妈咪礼盒')" data-lang="zh" class="active">立即订购</button>
+                        <button class="product-btn" onclick="openBooking('Mommy Collection')" data-lang="en">Order Now</button>
+                        <button class="product-btn" onclick="openBooking('Koleksi Ibu')" data-lang="ms">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/About/Product/gallery/Gift%20set%20A-D.jpeg" alt="成长礼盒" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-lang="zh" class="active">欢乐成长礼盒</h3>
+                        <h3 class="product-name" data-lang="en">Happy Growth Collection</h3>
+                        <h3 class="product-name" data-lang="ms">Koleksi Pertumbuhan Bahagia</h3>
+
+                        <p class="product-description" data-lang="zh" class="active">益智玩具与安全产品的完美组合</p>
+                        <p class="product-description" data-lang="en">Educational toys combined with safety-tested products</p>
+                        <p class="product-description" data-lang="ms">Mainan edukatif dikombinasikan dengan produk yang teruji keamanannya</p>
+
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">RM 358</span>
+                                <span class="discount-price">RM 258</span>
+                                <span class="discount-badge">28% OFF</span>
+                            </div>
+                            <div class="limit-info">
+                                <span class="stock-limit">仅剩10套</span>
+                                <span class="time-limit">还有 <span class="countdown" id="timer4">09:15:48</span></span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="openBooking('成长礼盒')" data-lang="zh" class="active">立即订购</button>
+                        <button class="product-btn" onclick="openBooking('Growth Collection')" data-lang="en">Order Now</button>
+                        <button class="product-btn" onclick="openBooking('Koleksi Pertumbuhan')" data-lang="ms">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/About/Product/gallery/Newborn%20giftset%20customize%20name.jpeg" alt="家庭护理套装" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-lang="zh" class="active">家庭护理套装</h3>
+                        <h3 class="product-name" data-lang="en">Complete Home Care Package</h3>
+                        <h3 class="product-name" data-lang="ms">Paket Perawatan Rumah Lengkap</h3>
+
+                        <p class="product-description" data-lang="zh" class="active">新生儿到幼儿阶段的全方位护理方案</p>
+                        <p class="product-description" data-lang="en">Comprehensive care solutions from newborn to toddler stage</p>
+                        <p class="product-description" data-lang="ms">Solusi perawatan komprehensif dari bayi baru lahir hingga balita</p>
+
+                        <div class="price-section">
+                            <div class="price-wrapper">
+                                <span class="original-price">RM 598</span>
+                                <span class="discount-price">RM 498</span>
+                                <span class="discount-badge">17% OFF</span>
+                            </div>
+                            <div class="limit-info">
+                                <span class="stock-limit">仅剩6套</span>
+                                <span class="time-limit">还有 <span class="countdown" id="timer5">21:30:15</span></span>
+                            </div>
+                        </div>
+                        <button class="product-btn" onclick="openBooking('护理套装')" data-lang="zh" class="active">立即订购</button>
+                        <button class="product-btn" onclick="openBooking('Care Package')" data-lang="en">Order Now</button>
+                        <button class="product-btn" onclick="openBooking('Paket Perawatan')" data-lang="ms">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片画廊 -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-lang="zh" class="active">产品相册</h2>
+            <h2 class="section-title" data-lang="en">Product Gallery</h2>
+            <h2 class="section-title" data-lang="ms">Galeri Produk</h2>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.19.jpeg" alt="产品展示1" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">产品细节</div>
+                        <div class="gallery-overlay-text" data-lang="en">Product Details</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Detail Produk</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.20.jpeg" alt="产品展示2" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">包装设计</div>
+                        <div class="gallery-overlay-text" data-lang="en">Packaging Design</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Desain Kemasan</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.20%20(1).jpeg" alt="产品展示3" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">品质承诺</div>
+                        <div class="gallery-overlay-text" data-lang="en">Quality Assurance</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Jaminan Kualitas</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.20%20(2).jpeg" alt="产品展示4" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">奢华体验</div>
+                        <div class="gallery-overlay-text" data-lang="en">Luxury Experience</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Pengalaman Mewah</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.39.jpeg" alt="产品展示5" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">客户案例</div>
+                        <div class="gallery-overlay-text" data-lang="en">Customer Stories</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Cerita Pelanggan</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/About/Product/gallery/WhatsApp%20Image%202026-04-22%20at%2010.08.57.jpeg" alt="产品展示6" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text" data-lang="zh" class="active">温暖时刻</div>
+                        <div class="gallery-overlay-text" data-lang="en">Precious Moments</div>
+                        <div class="gallery-overlay-text" data-lang="ms">Momen Berharga</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 顾客评价 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-lang="zh" class="active">顾客说</h2>
+            <h2 class="section-title" data-lang="en">Customer Reviews</h2>
+            <h2 class="section-title" data-lang="ms">Ulasan Pelanggan</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"礼盒设计太精致了！每个细节都能看出用心，朋友收到时眼泪都要掉下来了。这是我送过最成功的礼物。"</p>
+                    <p class="testimonial-text" data-lang="en">"The gift box design is exquisite! Every detail shows thoughtfulness. My friend was almost in tears. This is the best gift I've ever given!"</p>
+                    <p class="testimonial-text" data-lang="ms">"Desain kotak hadiah sangat indah! Setiap detail menunjukkan perhatian. Teman saya hampir menangis. Ini hadiah terbaik yang pernah saya berikan!"</p>
+                    <p class="testimonial-author">— Li 女士</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"产品质量非常好，宝宝用着也很舒服。WhatsApp客服回应速度快，咨询时都能得到专业建议，满分！"</p>
+                    <p class="testimonial-text" data-lang="en">"The product quality is excellent. My baby is very comfortable using it. The WhatsApp customer service responds quickly with professional advice. Perfect!"</p>
+                    <p class="testimonial-text" data-lang="ms">"Kualitas produk sangat bagus. Bayi saya sangat nyaman menggunakannya. Layanan pelanggan WhatsApp merespons dengan cepat dan profesional. Sempurna!"</p>
+                    <p class="testimonial-author">— Wang 先生</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"初为人父，不知道送什么礼物。初生之礼帮我解决了这个难题，礼盒太棒了，同事都在问我在哪里买的。"</p>
+                    <p class="testimonial-text" data-lang="en">"As a new father, I didn't know what to give. Newborn Luxury solved this perfectly. The gift box is amazing. My colleagues keep asking where I bought it!"</p>
+                    <p class="testimonial-text" data-lang="ms">"Sebagai ayah baru, saya tidak tahu apa yang harus diberikan. Newborn Luxury menyelesaikan masalah ini dengan sempurna. Kotak hadiah sangat menakjubkan!"</p>
+                    <p class="testimonial-author">— Zhang 女士</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"用心的选择，精致的包装，贴心的服务。这不仅是礼物，更是一份真挚的祝福。强烈推荐！"</p>
+                    <p class="testimonial-text" data-lang="en">"Thoughtful selection, exquisite packaging, attentive service. This is not just a gift, but a sincere blessing. Highly recommended!"</p>
+                    <p class="testimonial-text" data-lang="ms">"Pilihan penuh perhatian, kemasan indah, layanan yang perhatian. Ini bukan hanya hadiah, tetapi berkah yang tulus. Sangat direkomendasikan!"</p>
+                    <p class="testimonial-author">— Chen 先生</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"每件产品都经得起审视，包装更是精美绝伦。朋友说这是她收过最尊贵的礼物，我也这么觉得。"</p>
+                    <p class="testimonial-text" data-lang="en">"Every product is impeccable, and the packaging is absolutely exquisite. My friend said this is the most elegant gift she's ever received. I agree completely!"</p>
+                    <p class="testimonial-text" data-lang="ms">"Setiap produk sempurna, dan kemasannya sangat elegan. Teman saya mengatakan ini hadiah paling elegan yang pernah dia terima. Saya setuju!"</p>
+                    <p class="testimonial-author">— Liu 女士</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-lang="zh" class="active">"作为医生，我很看重产品的安全性和质量。初生之礼的产品完全符合我的期望，已经推荐给多位患者。"</p>
+                    <p class="testimonial-text" data-lang="en">"As a doctor, I value product safety and quality highly. Newborn Luxury products exceed my expectations. I've recommended them to many patients."</p>
+                    <p class="testimonial-text" data-lang="ms">"Sebagai dokter, saya sangat menghargai keamanan dan kualitas produk. Produk Newborn Luxury melebihi harapan saya. Saya telah merekomendasikannya kepada banyak pasien."</p>
+                    <p class="testimonial-author">— Dr. Zhao</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2 data-lang="zh" class="active">准备好迎接新生命了吗？</h2>
+            <h2 data-lang="en">Ready to Celebrate New Life?</h2>
+            <h2 data-lang="ms">Siap Merayakan Kehidupan Baru?</h2>
+
+            <p data-lang="zh" class="active">让初生之礼为您传递最温暖、最精致的祝福。与我们的团队联系，获得专业的定制建议。</p>
+            <p data-lang="en">Let Newborn Luxury convey your warmest, most elegant wishes. Contact our team for professional customization advice.</p>
+            <p data-lang="ms">Biarkan Newborn Luxury menyampaikan keinginan Anda yang paling hangat dan elegan. Hubungi tim kami untuk nasihat kustomisasi profesional.</p>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/60103722123?text=你好，我想了解初生之礼的产品和定制服务" class="whatsapp-btn" target="_blank">
+                    💬 WhatsApp 咨询
+                </a>
+                <button class="btn btn-primary" onclick="openBooking('咨询预约')" data-lang="zh" class="active">📅 预约咨询</button>
+                <button class="btn btn-primary" onclick="openBooking('Consultation')" data-lang="en">📅 Book Consultation</button>
+                <button class="btn btn-primary" onclick="openBooking('Konsultasi')" data-lang="ms">📅 Pesan Konsultasi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-lang="zh" class="active">初生之礼</h3>
+                    <h3 data-lang="en">Newborn Luxury</h3>
+                    <h3 data-lang="ms">Newborn Luxury</h3>
+                    <p data-lang="zh" class="active">为新生命的到来，创造最难忘的时刻。我们用心打造每一份礼物，只为传递真挚的祝福。</p>
+                    <p data-lang="en">Creating unforgettable moments for new arrivals. We craft each gift with care to convey sincere blessings.</p>
+                    <p data-lang="ms">Menciptakan momen tak terlupakan untuk kedatangan baru. Kami merancang setiap hadiah dengan hati-hati untuk menyampaikan berkah yang tulus.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-lang="zh" class="active">快速链接</h3>
+                    <h3 data-lang="en">Quick Links</h3>
+                    <h3 data-lang="ms">Tautan Cepat</h3>
+                    <a href="#about" data-lang="zh" class="active">关于我们</a>
+                    <a href="#about" data-lang="en">About Us</a>
+                    <a href="#about" data-lang="ms">Tentang Kami</a>
+                    <a href="#products" data-lang="zh" class="active">产品系列</a>
+                    <a href="#products" data-lang="en">Products</a>
+                    <a href="#products" data-lang="ms">Produk</a>
+                </div>
+                <div class="footer-section">
+                    <h3 data-lang="zh" class="active">联系方式</h3>
+                    <h3 data-lang="en">Contact</h3>
+                    <h3 data-lang="ms">Hubungi</h3>
+                    <p>📧 Email: <a href="mailto:yipee1225@gmail.com">yipee1225@gmail.com</a></p>
+                    <p>📱 WhatsApp: <a href="https://wa.me/60103722123" target="_blank">+60 103722123</a></p>
+                    <p data-lang="zh" class="active">⏰ 周一至周日 09:00-22:00</p>
+                    <p data-lang="en">⏰ Mon-Sun 09:00-22:00</p>
+                    <p data-lang="ms">⏰ Sen-Min 09:00-22:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Newborn Luxury. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 预订模态 -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 data-lang="zh" class="active">预约 <span id="productName"></span></h2>
+            <h2 data-lang="en">Book <span id="productName"></span></h2>
+            <h2 data-lang="ms">Pesan <span id="productName"></span></h2>
+
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="你的名字 / Your Name / Nama Anda" required>
+                <input type="email" placeholder="你的邮箱 / Your Email / Email Anda" required>
+                <input type="tel" placeholder="电话/WhatsApp / WhatsApp / WhatsApp" required>
+                <textarea placeholder="需求或问题（可选）/ Questions / Pertanyaan (Opsional)"></textarea>
+                <button type="submit" class="modal-btn" data-lang="zh" class="active">提交预约</button>
+                <button type="submit" class="modal-btn" data-lang="en">Submit</button>
+                <button type="submit" class="modal-btn" data-lang="ms">Kirim</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'zh';
+        const modal = document.getElementById('bookingModal');
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                element.classList.remove('active');
+                if (element.getAttribute('data-lang') === lang) {
+                    element.classList.add('active');
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        function openBooking(productName) {
+            document.getElementById('productName').textContent = productName;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const msg = currentLang === 'zh' ? '感谢您的预约！我们会通过WhatsApp尽快与您联系。' :
+                       currentLang === 'en' ? 'Thank you for your booking! We will contact you via WhatsApp soon.' :
+                       'Terima kasih atas pemesanan Anda! Kami akan menghubungi Anda melalui WhatsApp segera.';
+            alert(msg);
+            closeModal();
+            event.target.reset();
+        }
+
+        // 倒计时功能
+        function startCountdown() {
+            const timers = [
+                { id: 'timer1', hours: 12, minutes: 34, seconds: 56 },
+                { id: 'timer2', hours: 18, minutes: 45, seconds: 22 },
+                { id: 'timer3', hours: 15, minutes: 22, seconds: 10 },
+                { id: 'timer4', hours: 9, minutes: 15, seconds: 48 },
+                { id: 'timer5', hours: 21, minutes: 30, seconds: 15 }
+            ];
+
+            timers.forEach(timer => {
+                let totalSeconds = timer.hours * 3600 + timer.minutes * 60 + timer.seconds;
+                const element = document.getElementById(timer.id);
+
+                if (element) {
+                    setInterval(() => {
+                        if (totalSeconds > 0) {
+                            totalSeconds--;
+                            const hours = Math.floor(totalSeconds / 3600);
+                            const minutes = Math.floor((totalSeconds % 3600) / 60);
+                            const seconds = totalSeconds % 60;
+
+                            element.textContent =
+                                String(hours).padStart(2, '0') + ':' +
+                                String(minutes).padStart(2, '0') + ':' +
+                                String(seconds).padStart(2, '0');
+                        }
+                    }, 1000);
+                }
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('[data-lang="zh"]').forEach(el => {
+                el.classList.add('active');
+            });
+            startCountdown();
+        });
+    </script>
+</body>
+</html>
